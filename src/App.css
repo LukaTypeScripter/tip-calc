@@ -1,0 +1,315 @@
+:root{
+  --strong-cyan: hsl(172, 67%, 45%);
+  --very-dark-cyan: hsl(183, 100%, 15%);
+  --empty-cyan: hsla(183, 78%, 24%, 1);
+  --dark-grayish-cyan1: hsl(186, 14%, 43%);
+  --dark-grayish-cyan2: hsl(184, 14%, 56%);
+  --light-grayish-cyan1: hsl(185, 41%, 84%);
+  --light-grayish-cyan2: hsl(189, 41%, 97%);
+  --light-cyan: hsla(173, 61%, 77%, 1);
+  --red: hsla(13, 70%, 61%, 1);
+}
+html {
+  font-size: 10px;
+}
+*, *::after, *::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: var(--dark-grayish-cyan1);
+  font-size: 2.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  align-content: space-evenly;
+    min-height: 100vh;
+}
+#logo {
+  position: relative;
+  left: 42rem;
+  bottom: 4rem;
+  
+}
+form {
+  max-width: 37.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 3rem;
+  border-radius: 1rem;
+  background: hsl(0, 0%, 100%);
+  padding: 3.2rem 2.4rem;
+  font-weight: 700;
+}
+input {
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+.bill-count, fieldset, .peopleCont, #output {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 31.1rem;
+  margin-top: 3.2rem;
+}
+.bill-cont, .people-cont, legend {
+  height: 7.8rem;
+  font-size: 1.6rem;
+  color: var(--dark-grayish-cyan1);
+}
+fieldset {
+  border: none;
+}
+/* inside .people-cont + .bill-cont */
+  .bill-input-cont, .people-input-cont {
+      position: relative;
+      height: 4.8rem;
+      background: var(--light-grayish-cyan2);
+  }
+  
+  .bill-input-cont > input, .people-input-cont > input {
+      position: absolute;
+      left: 0;
+      top:0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      border: none;
+      text-align: right;
+      font-family: 'Space Mono', monospace;
+      color: var(--very-dark-cyan);
+      font-size: 2.4rem;
+      font-weight: 700;
+  }
+  .bill-input-cont > img, .people-input-cont > img {
+      position: absolute;
+      top: 1.6rem;
+      left: 1.6rem;
+  }
+  /* warning when zero people. I would simply prevent that by min=1-attribut in the html but
+  ... */
+  .red-when-zero-people {
+      display: inline;
+      position: absolute;
+      right: 0;
+      text-align: right;
+      color: var(--red);
+  }
+  .no-warning {
+      display: none;
+  }
+  input.red-border {
+      border: 2px solid var(--red);
+  }
+/* inside fieldset */
+  legend {
+      /* more style rules above 
+      together with .bill-cont, .people-cont */
+      height: 2.4rem;
+  }
+  #btn-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+  }
+  /* inside btn-container */
+      .btn-cont {
+          display: block;
+          position: relative;
+          width: 14.66rem;
+          height: 4.8rem;
+          margin-top: 1.6rem;
+          border-radius: 0.5rem;
+      }
+      .tip-label {
+          display: block;
+          position: relative;
+          width: 14.66rem;
+          height: 4.8rem;
+          background: var(--very-dark-cyan);
+          text-align: center;
+          font-size: 2.4rem;
+          line-height: 2;
+          color: hsl(0, 0%, 100%);
+          border-radius: 0.5rem;
+      }
+      input[type=radio]:checked ~ label {
+          background: var(--strong-cyan);
+          color: var(--very-dark-cyan);
+          box-shadow: 0 0 0 4px var(--light-cyan);
+      }
+      
+      /* makes default radio btns invisible */
+      .tipPercent {
+          position: absolute;
+          left: 0;
+          top:0;
+          opacity: 0;
+          width: 14.66rem;
+          height: 4.8rem;
+          /* put radios above labels to be clickable, but in the html they have to be before 
+              the radios to make the ~-sibling-selector work to style the checked state of the invisible radios
+              showing in the labels*/
+          z-index: 1;
+      }
+      .btn-cont:hover  label{
+          background: var(--light-cyan);
+          color: var(--very-dark-cyan);
+      } 
+     /* customBtn -container to stack radio and input */
+      .customBtn label {
+          background: var(--light-grayish-cyan2);
+          color: transparent;
+          border: 2px solid transparent;
+      }
+      .customBtn:hover label, .bill-input-cont:hover, .people-input-cont:hover {
+          outline: 2px solid var(--strong-cyan);
+          background: var(--light-grayish-cyan2);
+      }
+      .customBtn:hover label {
+          color: transparent;
+      }
+      *:focus{
+          box-shadow: 0px 0px 8px var(--strong-cyan);
+      }
+      .customBtn label:last-of-type {
+          opacity: 0;
+      }
+      #customInput {
+          opacity: 1;
+          background: transparent;
+          border: 2px solid transparent;
+          text-align: center;
+          font-family: 'Space Mono', monospace;
+          color: var(--very-dark-cyan);
+          font-size: 2.4rem;
+          font-weight: 700;
+      }
+      /* appearance must not be used for websites (MDNdocs!), but it works on my machine ¯\_(ツ)_/¯, Kevin!  */
+      /* Seriously: if you know how and IF the spinner arrows can/should be hidden, pls let me know */
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+      }
+      input[type="number"] {
+          outline: transparent;
+          padding-right: 1rem;
+      }
+      .people-cont {
+          position: relative;
+      }
+      /* last rule with high specificity to overwrite ... */
+      #custom:checked + #custom-label {
+          color: transparent;
+          background: var(--light-grayish-cyan2);
+      }
+      #btn-container  input[type="radio"]:focus + label {
+          box-shadow: 0 0 0 4px var(--light-cyan);
+      }
+#output {
+  background: var(--very-dark-cyan);
+  padding: 3.6rem 2.4rem 2.4rem 2.4rem;
+  border-radius: 1rem;
+}
+/* inside output */
+  .output-numbers {
+      justify-content: space-between;
+  }
+  /* choose all p elem with an id ending with "person" by attribute selector */
+  p[id$="person"]{
+      font-size: 1.6rem;
+      color: hsl(0, 0%, 100%);
+  }
+  p[id$="person"] span{
+      font-size: 1.3rem;
+      color: var(--dark-grayish-cyan2);
+  }
+  .totalOutput {
+      margin-top: 2rem;
+  }
+  /* choose all p elem with an id ending with "Sum" by attribute selector */
+  p[id$="Sum"]{
+      align-self: flex-end;
+      font-size: 3.2rem;
+  }
+  #reset {
+      width: 100%;
+      height: 4.8rem;
+      border-radius: 0.5rem;
+      margin-top: 3.2rem;
+      background: var(--strong-cyan);
+      font-family: 'Space Mono', monospace;
+      color: hsl(183, 100%, 15%);
+      font-size: 2rem;
+      font-weight: 700;
+  }
+  #reset:hover {
+      background: var(--light-cyan);
+      color: var(--very-dark-cyan);
+  }
+  /* hide label for reset btn visually */
+  .hide-visually {
+      position: absolute;
+      color: transparent;
+  }
+.output-numbers {
+  display: flex;
+  color: var(--strong-cyan);
+}
+/* high specificity neccessary */
+input#reset.empty {
+  background: var(--empty-cyan);
+  color: var(--very-dark-cyan);
+}
+.attribution {
+  font-size: 1.7rem;
+}
+/* media-queries for desktop version */
+@media (min-width: 925px) {
+      form {
+          width: 100%;
+          max-width: 92rem;
+          height: 48.1rem;
+          padding: 3.2rem 3.2rem 3.2rem 4.8rem;
+          justify-content: space-between;
+      }
+      .bill-cont, fieldset, .people-cont, #output {
+          width: 37.9rem;
+      }
+      #input {
+          width: 37.9rem;
+          height: 38.8rem;
+          margin-right: 3.2rem;
+      }
+          .bill-cont {
+              margin-top: 0;
+          }
+          .btn-cont, .tip-label, .tipPercent {
+              width: 11.7rem;
+          }
+      #output {
+          width: 41.3rem;
+          height: 41.7rem;
+          margin-top: 0;
+          border-radius: 1.5rem;
+          padding: 4rem;
+          justify-content: space-between;
+      }
+          .totalOutput {
+              margin-top: 0;
+          }
+          #reset {
+              margin-top: 12.2rem;
+          }
+}
+
+#warning {
+    position: relative;
+    left: 15px;
+}
