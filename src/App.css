@@ -65,7 +65,7 @@ input {
 fieldset {
   border: none;
 }
-/* inside .people-cont + .bill-cont */
+
   .bill-input-cont, .people-input-cont {
       position: relative;
       height: 4.8rem;
@@ -91,8 +91,7 @@ fieldset {
       top: 1.6rem;
       left: 1.6rem;
   }
-  /* warning when zero people. I would simply prevent that by min=1-attribut in the html but
-  ... */
+  
   .red-when-zero-people {
       display: inline;
       position: absolute;
@@ -106,10 +105,9 @@ fieldset {
   input.red-border {
       border: 2px solid var(--red);
   }
-/* inside fieldset */
+
   legend {
-      /* more style rules above 
-      together with .bill-cont, .people-cont */
+    
       height: 2.4rem;
   }
   #btn-container {
@@ -118,7 +116,7 @@ fieldset {
       flex-wrap: wrap;
       justify-content: space-between;
   }
-  /* inside btn-container */
+  
       .btn-cont {
           display: block;
           position: relative;
@@ -145,7 +143,7 @@ fieldset {
           box-shadow: 0 0 0 4px var(--light-cyan);
       }
       
-      /* makes default radio btns invisible */
+    
       .tipPercent {
           position: absolute;
           left: 0;
@@ -153,16 +151,14 @@ fieldset {
           opacity: 0;
           width: 14.66rem;
           height: 4.8rem;
-          /* put radios above labels to be clickable, but in the html they have to be before 
-              the radios to make the ~-sibling-selector work to style the checked state of the invisible radios
-              showing in the labels*/
+         
           z-index: 1;
       }
       .btn-cont:hover  label{
           background: var(--light-cyan);
           color: var(--very-dark-cyan);
       } 
-     /* customBtn -container to stack radio and input */
+     
       .customBtn label {
           background: var(--light-grayish-cyan2);
           color: transparent;
@@ -191,8 +187,7 @@ fieldset {
           font-size: 2.4rem;
           font-weight: 700;
       }
-      /* appearance must not be used for websites (MDNdocs!), but it works on my machine ¯\_(ツ)_/¯, Kevin!  */
-      /* Seriously: if you know how and IF the spinner arrows can/should be hidden, pls let me know */
+      
       input[type="number"]::-webkit-inner-spin-button,
       input[type="number"]::-webkit-outer-spin-button {
           -webkit-appearance: none;
@@ -204,7 +199,7 @@ fieldset {
       .people-cont {
           position: relative;
       }
-      /* last rule with high specificity to overwrite ... */
+      
       #custom:checked + #custom-label {
           color: transparent;
           background: var(--light-grayish-cyan2);
@@ -217,11 +212,11 @@ fieldset {
   padding: 3.6rem 2.4rem 2.4rem 2.4rem;
   border-radius: 1rem;
 }
-/* inside output */
+
   .output-numbers {
       justify-content: space-between;
   }
-  /* choose all p elem with an id ending with "person" by attribute selector */
+  
   p[id$="person"]{
       font-size: 1.6rem;
       color: hsl(0, 0%, 100%);
@@ -233,7 +228,7 @@ fieldset {
   .totalOutput {
       margin-top: 2rem;
   }
-  /* choose all p elem with an id ending with "Sum" by attribute selector */
+ 
   p[id$="Sum"]{
       align-self: flex-end;
       font-size: 3.2rem;
@@ -253,7 +248,7 @@ fieldset {
       background: var(--light-cyan);
       color: var(--very-dark-cyan);
   }
-  /* hide label for reset btn visually */
+ 
   .hide-visually {
       position: absolute;
       color: transparent;
@@ -262,7 +257,7 @@ fieldset {
   display: flex;
   color: var(--strong-cyan);
 }
-/* high specificity neccessary */
+
 input#reset.empty {
   background: var(--empty-cyan);
   color: var(--very-dark-cyan);
@@ -270,7 +265,7 @@ input#reset.empty {
 .attribution {
   font-size: 1.7rem;
 }
-/* media-queries for desktop version */
+
 @media (min-width: 925px) {
       form {
           width: 100%;
